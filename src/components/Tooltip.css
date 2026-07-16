@@ -1,0 +1,98 @@
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.tooltip-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: help;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.tooltip-icon-btn:hover,
+.tooltip-icon-btn:active,
+.tooltip-icon-btn:focus {
+  color: #3b82f6;
+  outline: none;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(8px);
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  width: max-content;
+  max-width: 300px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: normal;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  z-index: 100;
+  animation: tooltipFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(30, 41, 59, 0.95) transparent transparent transparent;
+}
+
+/* Mobile adjustments: Inline expansion */
+@media (max-width: 768px) {
+  .tooltip-container {
+    position: static;
+  }
+  
+  .tooltip-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    bottom: auto;
+    transform: translateY(8px);
+    margin: 0;
+    border-radius: 8px;
+    z-index: 100;
+  }
+  
+  @keyframes tooltipFadeInMobile {
+    from { opacity: 0; transform: translateY(0px); }
+    to { opacity: 1; transform: translateY(8px); }
+  }
+
+  .tooltip-content {
+    animation: tooltipFadeInMobile 0.2s ease-out forwards;
+  }
+
+  .tooltip-content::after {
+    display: none;
+  }
+}
