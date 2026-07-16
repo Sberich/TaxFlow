@@ -168,7 +168,7 @@ const Step1Personal = ({ data, updateData, loadFullData, resetData }: Props) => 
               onChange={(value) => updateData({ filingStatus: value as any })}
               options={[
                 { value: "แยกยื่น", label: "แยกยื่น" },
-                { value: "รวมคำนวณ", label: "รวมคำนวณ" }
+                { value: "รวมคำนวณ", label: "ยื่นรวม" }
               ]}
             />
           </div>
